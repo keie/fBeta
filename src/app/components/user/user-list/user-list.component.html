@@ -1,0 +1,182 @@
+<div class="FontF">
+  <a href="/users" >Seguridad</a>  > <a href="/users">Administración </a> > Usuarios
+</div>
+
+<app-spinner [isVisible]="isVisible"></app-spinner>
+
+
+<div class="card shadow mb-4 marginT"  >
+  <div class="card-header py-3">
+    <h4></h4>
+  </div>
+    <div >
+      <h1 class="FontF tops">Usuarios</h1>
+    </div>
+    <div class="card-body" >
+       <div class="table-responsive">
+          </div> 
+
+<!-- TABLA -->
+
+            <div style="text-align: right; margin: 0% 2% 2% 2%;">
+            <button *ngIf="boolCrear" mat-raised-button (click)="onCreate()" class="FontF btn btn-primary">
+              <mat-icon >{{sCrear}}</mat-icon>Agregar
+            </button>
+            </div>
+            
+            <table mat-table [dataSource]="listData" class="mat-elevation-z8 table-responsive" style="text-align: center;" matSort>
+            
+              <ng-container matColumnDef="actions" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">Acciones</p>
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilterA" matInput  (keyup)="applyFilter()"  [formControl]="">
+                  </mat-form-field></th>
+                <td mat-cell *matCellDef="let row">
+                  <button *ngIf="boolVisualizar" mat-icon-button (click)="onView(row)"><mat-icon>{{sVisualizar}}</mat-icon></button> 
+                  <button *ngIf="boolModificar" mat-icon-button (click)="onEdit(row)"><mat-icon>{{sModificar}}</mat-icon></button>
+                  
+                  <button *ngIf="boolEliminar" mat-icon-button color="warn" (click)="onDelete(row.iIdUsuario)"><mat-icon>{{sEliminar}}</mat-icon></button>
+                </td>
+              </ng-container>
+              <!-- Position Column -->
+              <ng-container matColumnDef="Usuario">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat" ><p class="pTable">Usuario</p>&nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="userFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sUsuario}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Nombre">
+                
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">Nombre(s)</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter" style="left: 10px;">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()" [formControl]="nombreFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sNombre}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="Apellido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">Apellido(s)</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="apellidoFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sApellido}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="NroTelf">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTableT">Nro. de teléfono</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="nroTelfFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sTelefono}} </td>
+              </ng-container>
+              <ng-container matColumnDef="NroCell">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTableC">Nro. de celular</p>  &nbsp;  
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="nroCellFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sMovil}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Email" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">E-mail</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="emailFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sEmail}} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="Planta">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">Planta</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                   <!--  <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="plantaFilter"> -->
+                   <mat-select >
+                    <mat-option *ngFor="let element of listPlantas" [value]="element.sCodigo"  (click)="applyFilter()">
+                        {{element.sNombre}}
+                    </mat-option>
+                </mat-select>
+                  </mat-form-field>                 
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sPlanta}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="SuperUser">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTableS">Super Usuario</p>  &nbsp; 
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()" [formControl]="superUserFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF">
+                  <mat-icon class="checkcolor" *ngIf="element.iSuperAdmin === 1" >done</mat-icon>
+                 <!--  <mat-icon *ngIf="element.iSuperAdmin !== 1">close</mat-icon> -->
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Acceso">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTableS"> Último Acceso</p>  &nbsp; 
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()" [formControl]="accesoFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF">{{element.dtAcceso}} </td>
+                
+              </ng-container>
+
+              <ng-container matColumnDef="Notifi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTableN">Recibir Notificaciones</p>  &nbsp;  
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="notifFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF">
+                  <mat-icon  class="checkcolor" *ngIf="element.iRecibirNotificaciones === 1" >done</mat-icon>
+<!--                   <mat-icon *ngIf="element.iRecibirNotificaciones !== 1">close</mat-icon>
+ -->                </td>
+              </ng-container>
+              <ng-container matColumnDef="Edo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p class="pTable">Estado</p> 
+                   <mat-form-field appearance="standar" class="matformfilter">
+                   <!--  <input class="FontF inputfilter" matInput  (keyup)="applyFilter()" [formControl]="edoFilter"> -->
+
+                    <mat-select >
+                     
+                     <mat-option value="ACTIVO">ACTIVO</mat-option>
+                     <mat-option value="INACTIVO">INACTIVO</mat-option>
+                 </mat-select>
+                   </mat-form-field>
+
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sEstado}} </td>
+              </ng-container>
+              
+              
+              <ng-container matColumnDef="loading" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  loading...
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="noData" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  NO DATA
+                </th>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns" class="FontF"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['noData']"  [ngClass]="{'hide':!(listData!=null && listData.data.length==0 )}" class="FontF"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons class="FontF">
+
+            </mat-paginator>
+          </div>
+        </div>
+      
+

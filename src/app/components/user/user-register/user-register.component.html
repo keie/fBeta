@@ -1,0 +1,233 @@
+<!--<mat-toolbar class="FontF">
+    <span>{{service.form.controls['iIdUsuario'].value?"Información del Usuario":"Informacion del Usuario"}}</span>
+    <span class="fill-remaining-space"></span>
+   
+     <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button> 
+</mat-toolbar>-->
+
+<div class="modal-header headerC" >
+    <mat-toolbar class="FontF">
+    <span>{{service.form.controls['iIdUsuario'].value?"Información del Usuario":"Información del Usuario"}}</span>
+    <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+    <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+<div class="modal-body">
+    <form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+
+          <!--TAB CARD-->
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active FontT" id="perfil-tab" data-toggle="tab" href="#perfil" role="tab" aria-controls="perfil" aria-selected="true">Perfil</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link FontT" id="permisos-tab" data-toggle="tab" href="#permisos" role="tab" aria-controls="permisos" aria-selected="false">Permisos</a>
+    </li>
+
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="perfil" role="tabpanel" aria-labelledby="home-perfil">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h4 class="m-0 font-weight-bold text-primary FontF">Información General</h4>
+            </div>
+            <div class="card-body">
+        <!--PERFIL-->
+       <!--  <mat-grid-list cols=2 rowHeight="2:2"> -->
+        <div class="row">
+            <div class="col-md-6">
+            <!-- <mat-grid-tile>
+                <div > -->
+                    <!--<input type="hidden" formControlName="$key">-->
+                    <mat-form-field class="FontF"style="margin-right: 15px;" >
+                        <input formControlName="sUsuario" matInput placeholder="Usuario" maxlength="45">
+                        <mat-error>Ingrese el Usuario</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="FontF"  >
+                        <input formControlName="sNombre" matInput placeholder="Nombre(s)">
+                        <mat-error>Ingrese el/los Nombre(s)</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="FontF">
+                        <input formControlName="sApellido" matInput placeholder="Apellido(s)">
+                        <mat-error>Ingrese el/los Apellido(s)</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="FontF" style="margin-right: 15px;">
+                        <input formControlName="sEmail" matInput placeholder="Email" maxlength="280">
+                        <mat-error>Ingrese su E-mail</mat-error>
+                    </mat-form-field>
+                    <!--<mat-form-field>
+                        <input formControlName="id" matInput placeholder="id" readonly>
+                    </mat-form-field>-->
+
+                    <mat-checkbox class="FontF" [value]="'isSuperUsuario'" [checked]="populateCheck('isSuperUsuario')" (change)="checkboxChangeSuperUsuario($event.source, $event.checked)" color= warn>Super Usuario</mat-checkbox> <br><br>
+                    
+                    <mat-checkbox class="FontF" [value]="'notificaciones'" [checked]="populateCheck('notificaciones')" (change)="checkboxChangeSuperUsuario($event.source, $event.checked)" color= warn>Desea Recibir Notificaciones</mat-checkbox>
+
+        </div>  
+
+        <div class="col-md-6">
+            <!-- PLANTAS PERFIL-->
+            <mat-form-field class="FontF" style="margin-right: 15px;">
+                <mat-label>Plantas</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let element of listData" [value]="element.sCodigo">
+                        {{element.sNombre}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                        <!-- <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                              <h4 class="m-0 font-weight-bold text-primary FontF"> Plantas</h4>
+                            </div>
+                            
+                                <div class="card-body FontF">
+                                    <div  class= "row">
+                                        <div *ngFor="let element of listData;  let i = index" class="col-md-4">
+                                            <mat-checkbox >{{element.sCodigo}}</mat-checkbox>
+                                            
+                                             <mat-checkbox #checkBox [value]="element.sCodigo" [checked]="validatePlanta(element.sCodigo)" (change)="selected === i" (click)="getCheckbox(checkBox)" color= warn>{{element.sCodigo}}</mat-checkbox>
+                                             
+                                            <mat-label>Plantas</mat-label>
+                                            <mat-select>
+                                                <mat-option *ngFor="let element of listData;  let i = index" [value]="elelemnt.value">
+                                                    {{element.sCodigo}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div> -->
+                        <!-- PLANTAS PERFIL-->
+
+                        
+                        <mat-form-field class="FontF" style="margin-right: 15px;">
+                            <input formControlName="sTelefono" matInput placeholder="Número de Teléfono">
+                            <mat-error>este campo es obligatorio</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="FontF">
+                            <input formControlName="sMovil" matInput placeholder="Número de Celular">
+                            <mat-error>este campo es obligatorio</mat-error>
+                        </mat-form-field>
+
+                   
+                    
+                        <mat-form-field class="FontF">
+                            <mat-label>Estado</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let element of listData" [value]="element.sEstado">
+                                    {{element.sEstado}}
+                                </mat-option>
+                            </mat-select>
+                            
+                        </mat-form-field> 
+                    
+                    
+                    
+                <!-- </div> -->
+            <!-- </mat-grid-tile> -->
+        </div>
+        </div>
+            <!-- </mat-grid-list> -->
+        <!--PERFIL-->
+           </div>
+          </div>
+    </div>
+    <div class="tab-pane fade FontF" id="permisos" role="tabpanel" aria-labelledby="permisos-tab" style="margin-top: 5%;">
+        
+        <div class="card shadow mb-4" >
+            <div class="card-header py-3">
+              <h4 class="m-0 font-weight-bold text-primary FontF">Visualización de Cargos</h4>
+            </div>
+            <div class="card-body">
+
+                <div class= "row">
+                    <div class="col-md-4">
+                        <mat-checkbox class="FontF" [value]="'todos'" [checked]="validateCargo('todos')" (change)="checkboxChangeSuperUsuario($event.source, $event.checked)" color= warn>Todos</mat-checkbox>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <mat-checkbox class="FontF" [value]="'gerentes'" [checked]="validateCargo('gerente')" (change)="checkboxChangeSuperUsuario($event.source, $event.checked)" color= warn>Gerentes</mat-checkbox>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-checkbox class="FontF" [value]="'jefes'" [checked]="validateCargo('jefe')" (change)="checkboxChangeSuperUsuario($event.source, $event.checked)" color= warn>Jefes</mat-checkbox>
+                    </div>
+                    
+                </div>
+            </div>
+          </div>
+        
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                
+              <h4 class="m-0 font-weight-bold text-primary FontF">Visualización de Plantas</h4>
+            </div>
+            <div class="card-body FontF">
+
+                <div  class= "row">
+                    <div *ngFor="let element of listData" class="col-md-4">
+                        <mat-checkbox [value]="element.sCodigo" [checked]="validatePlantas(element.sCodigo)" (change)="checkboxChangePlantas($event.source, $event.checked)" color= warn>{{element.sCodigo}}</mat-checkbox>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+            <div class="card shadow mb-4" >
+                <div class="card-header py-3">
+                <h4 class="m-0 font-weight-bold text-primary FontF">Privilegios</h4>
+                </div>
+                
+                <div class="card-body FontF">
+                    <div class="col-md-12">
+                        <div class="row " *ngFor="let element of treeView" style="padding-right: 5%; padding-bottom: 5%;">
+                            <div class="col-md-12" style="margin-bottom: 3%;"><i class="{{element.seccion.sIconClass}}"></i> <strong>{{element.seccion.sNombre}}</strong></div>
+                            <hr>
+                            <div  class="col-md-6" *ngFor="let modelo of element.seccion.modelos" >
+
+                                <div class="card shadow mb-4" >
+                                    <div class="card-header py-3">
+                                        <h4 class="m-0 font-weight-bold text-primary FontF">{{modelo.sNombre}}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="col-md-12">
+                                <div *ngFor="let accion of modelo.acciones" class=" d-inline col-md-6">
+
+                                    <mat-checkbox class="ml-6 col-md-12" 
+                                        [checked]="validatePrivilegios(element.seccion.iIdSeccion, modelo.iIdModelo, accion.iIdAccion)" 
+                                        [value]="{iIdUsuario: 0, iIdSeccion: element.seccion.iIdSeccion, iIdModelo: modelo.iIdModelo,iIdAccion: accion.iIdAccion}" 
+                                        (change)="checkboxChange($event.source, $event.checked)" color= warn>
+                                        {{accion.sNombre}}  <mat-icon class="iconsM" style="padding-left: 5px;padding-right: 5px;"> {{accion.sIconClass}}</mat-icon> 
+                                    </mat-checkbox>
+                                
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                 </div>
+            
+
+
+
+
+
+
+
+                </div>
+        </div>
+    </div>
+ 
+  </div>
+   <!--TAB CARD-->
+        <div class="modal-footer" >
+        <button mat-raised-button  [disabled]="(service.form.invalid) && !(service.form.get('iIdUsuario').value)" class="FontF btn btn-primary">Guardar</button>
+        <button mat-raised-button  (click)="onClear()" class="FontF btn " style="margin-left: 20px;">Limpiar</button>
+        </div>
+    </form>
+
+  </div>

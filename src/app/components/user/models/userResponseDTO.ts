@@ -1,0 +1,22 @@
+export interface UserResponseDTO{
+    iIdUsuario:any;
+    sNombre:any;
+    sApellido:any;
+    sTelefono:any;
+    sMovil:any;
+    sEmail:any;
+    sPlanta:any;
+    iSuperAdmin:any;
+    iRecibirNotificaciones:any;
+    sEstado:any;
+    sUsuario:any;
+    sClave:any;
+    iCargo:any;
+    iCargoGerente:any;
+    iCargoJefe:any;
+    sUsuarioC:any;
+    dtFechaC:any;
+    sUsuarioM:any;
+    dtFechaM:any;
+    dtAcceso:any;
+}

@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Century Gothic; }
+snack-bar-container.success{
+    
+    background-color: greenyellow;
+    color:rgb(61, 56, 56);
+    margin-top: 80px;
+}
+
+snack-bar-container.warn{
+    
+    background-color: orange;
+    color:grey;
+    margin-top: 80px;
+}
+
+snack-bar-container.error{
+    
+    background-color: red;
+    color:#fff;
+    margin-top: 80px;
+}
+
+
+snack-bar-container.success simple-snack-bar{
+    
+    font-size: 14px !important;
+    font-weight: bold;
+}

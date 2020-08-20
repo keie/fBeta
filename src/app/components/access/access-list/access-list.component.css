@@ -1,0 +1,83 @@
+#layoutSidenav_content {
+    padding: 50px 0px 50px 250px;
+  }
+
+.containerFilters{
+  display: flex;
+  flex-wrap: nowrap;
+  padding:20px;
+}
+  
+  
+  input {
+    width: 100px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .hide{
+    display: none;
+  }
+
+  mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+  }
+  .FontF{
+    font-family: 'Century Gothic';
+    }
+
+    .marginT{
+      margin-top: 50px;
+    }
+  
+    .tops{
+      position: absolute; 
+      top: -150px;
+    }
+
+
+.matformfilter{
+  right: 40px; 
+  top: 18px;
+  left: 10px
+}
+
+.matformfilter3{
+  right: 103px; 
+  top: 18px;
+  left: 10px
+}
+.inputfilter{
+  border: solid 1px #0000001f;
+  border-radius: 5px; 
+  padding: 5px;
+  width: 100%;
+}
+
+.thmat{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #fdf4f4;
+  border-bottom: 1px solid #e3e6f0;
+}

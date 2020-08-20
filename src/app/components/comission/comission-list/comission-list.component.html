@@ -1,0 +1,137 @@
+<div class="FontF">
+  <a href="/comissions" >RRHH</a>  > <a href="/comission">Administración </a> > Comisiones
+</div>
+<app-spinner [isVisible]="isVisible"></app-spinner>
+<div class="card shadow mb-4 marginT" >
+    <div >
+      <h1 class="FontF tops">Comisiones</h1>
+    </div>
+    <div class="card-body" >
+      <div class="table-responsive">
+        <div class="flex-container" style="display: flex;flex-wrap: nowrap;">
+              <mat-form-field>
+                <mat-label class="FontF">Nombre</mat-label>
+                <input class="FontF" matInput  (keyup)="applyFilter()" placeholder="Nombre" [formControl]="nombreFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Apellido</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Apellido" [formControl]="apellidoFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Nro de telfeono</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Nro de telefono" [formControl]="nroTelfFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Nro de celular</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Nro de celular" [formControl]="nroCellFilter">
+              </mat-form-field>
+              
+              <mat-form-field class="FontF">
+                <mat-label>Correo electronico</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Correo electronico" [formControl]="emailFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Planta</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="planta" [formControl]="plantaFilter">
+              </mat-form-field>
+             
+             <mat-form-field class="FontF">
+                <mat-label>Super usuario</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="username" [formControl]="superUserFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Notificacion</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="notificacion" [formControl]="notifFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Estado</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Estado" [formControl]="edoFilter">
+              </mat-form-field>
+              <mat-form-field class="FontF">
+                <mat-label>Usuario</mat-label>
+                <input matInput  (keyup)="applyFilter()" placeholder="Usuario" [formControl]="userFilter">
+              </mat-form-field>
+          </div>
+            </div>
+
+            <table mat-table [dataSource]="listData" class="mat-elevation-z8" matSort>
+            
+              <ng-container matColumnDef="actions" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF">Acciones</th>
+                <td mat-cell *matCellDef="let row">
+                  <button mat-icon-button (click)="onEdit(row)"><mat-icon>launch</mat-icon></button>
+                  <button mat-icon-button color="warn" (click)="onDelete(row.iId)"><mat-icon>delete_outline</mat-icon></button>
+                </td>
+              </ng-container>
+              <!-- Position Column -->
+              <ng-container matColumnDef="Nombre">
+                
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Nombre &nbsp;
+                <input class="FontF" matInput  (keyup)="applyFilter()" placeholder="Nombre" [formControl]="nombreFilter"></th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sNombre}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="Apellido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF" class="FontF"> Apellido </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sApellido}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="NroTelf">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Nro de telf </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sNroTelf}} </td>
+              </ng-container>
+              <ng-container matColumnDef="NroCell">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Nro de celular </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sNroCelular}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Email" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Correo </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sEmail}} </td>
+              </ng-container>
+            
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="Planta">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Planta </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.iIdPlanta}} </td>
+              </ng-container>
+              <ng-container matColumnDef="SuperUser">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Super usuario </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.iSuperUsuario}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Notifi">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> notificaciones </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.iNotificaciones}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Edo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF"> Estado </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.iEstado}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Usuario">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF" class="FontF"> notificaciones </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sUsername}} </td>
+              </ng-container>
+              
+              <ng-container matColumnDef="loading" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  loading...
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="noData" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  NO DATA
+                </th>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns" class="FontF"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['noData']"  [ngClass]="{'hide':!(listData!=null && listData.data.length==0 )}" class="FontF"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons class="FontF">
+
+            </mat-paginator>
+          </div>
+        </div>
+      
+

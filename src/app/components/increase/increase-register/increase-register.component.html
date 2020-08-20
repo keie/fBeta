@@ -1,0 +1,89 @@
+<mat-toolbar>
+    <span>{{service.form.controls['iId'].value?"Modificacion":"Registro"}}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols=2 rowHeight="300px">
+        <mat-grid-tile>
+            <div class="controles-container">
+                <!--<input type="hidden" formControlName="$key">-->
+                <mat-form-field>
+                    <input formControlName="sNombre" matInput placeholder="Nombre">
+                    <mat-error>este campo es obligatorio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="sApellido" matInput placeholder="Apellido*">
+                    <mat-error>este campo es obligatorio</mat-error>
+                </mat-form-field>
+                <!--<mat-form-field>
+                    <input formControlName="id" matInput placeholder="id" readonly>
+                </mat-form-field>-->
+                
+                <mat-form-field>
+                    <input formControlName="sNroTelf" matInput placeholder="Numero de telefono">
+                    <mat-error>este campo es obligatorio</mat-error>
+                </mat-form-field><br/>
+                <mat-form-field>
+                    <input formControlName="sNroCelular" matInput placeholder="Numero de celular">
+                    <mat-error>este campo es obligatorio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="sEmail" matInput placeholder="Correo Electronico">
+                    <mat-error>este campo es obligatorio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select formControlName="iIdPlanta" placeholder="Planta">
+                        <mat-option>CBA</mat-option>
+                        <mat-option value="1">IA</mat-option>
+                       
+                    </mat-select>
+                </mat-form-field>-
+               <!-- <mat-form-field>
+                    <mat-select formControlName="sizeValues" placeholder="estatura apoximada">
+                        <mat-option>None</mat-option>
+                        <ng-container *ngFor="let sizeValue  of sizeValues">
+                            <mat-option value="{{sizeValue.id}}">{{sizeValue.firstValue}}(cm)--{{sizeValue.secondValue}}(cm)</mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>-->
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="controles-container">
+                <mat-form-field>
+                   
+                        <mat-select formControlName="iSuperUsuario" placeholder="Super usuario">
+                            <mat-option>Si</mat-option>
+                            <mat-option value="0">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>-
+               
+              
+                <mat-form-field>
+                    <mat-select formControlName="iNotificaciones" placeholder="Notificacion">
+                        <mat-option>Si</mat-option>
+                        <mat-option value="0">No</mat-option>
+                    </mat-select>
+                </mat-form-field>-
+            
+               
+                <mat-form-field>
+                    <input formControlName="sUsername" matInput placeholder="Nombre de usuario">
+                    <mat-error>email invalido</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="sPassword" matInput placeholder="clave de sistema">
+                    <mat-error>email invalido</mat-error>
+                </mat-form-field>
+                
+                
+                <div class="button-row">
+                    <button mat-raised-button color="accent" [disabled]="(service.form.invalid) && !(service.form.get('iId').value)">Submit</button>
+                    <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>
+

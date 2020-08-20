@@ -1,0 +1,103 @@
+<div class="FontF">
+  <a href="/access" >Seguridad</a>  > <a href="/access">Listado </a> > Accesos
+</div>
+
+<app-spinner [isVisible]="isVisible"></app-spinner>
+<div class="card shadow mb-4 marginT" >
+  <div class="card-header py-3">
+    <h4></h4>
+  </div>
+    <div >
+      <h1 class="FontF tops">Accesos</h1>
+    </div>
+    <div class="card-body" >
+      <div class="table-responsive">
+
+            </div>
+          <div class="table-responsive">
+            <table mat-table [dataSource]="listData" class="mat-elevation-z8 " style="text-align: center;" matSort>
+            
+              <ng-container matColumnDef="sUsuario">
+                
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"> <p style="position: absolute; top: 10px; left: 80px;">Usuario</p> &nbsp;
+<!---->        <mat-form-field  appearance="standar" class="matformfilter" style="left: 10px;" >
+                <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="sUsuarioFilter">
+              </mat-form-field>
+            </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sUsuario}} </td>
+              </ng-container>
+            
+              <!-- Name Column -->
+              <ng-container matColumnDef="sAccion">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  class="FontF thmat"><p style="position: absolute; top: 10px; left: 80px;">Acción </p>  &nbsp;
+                  <mat-form-field  appearance="standar" class="matformfilter" style="left: 10px;">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="sAccionFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sAccion}} </td>
+              </ng-container>
+            
+              <!-- Weight Column -->
+              <ng-container matColumnDef="dtFecha">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"> <p style="white-space: nowrap; position: absolute;
+    top: 10px;
+    left: 60px;">Fecha y Hora</p> &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="dtFechaFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.dtFecha}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sIp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"> <p style="white-space: nowrap; position: absolute;
+                  top: 10px;
+                  left: 65px">Dirección IP</p> &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="sIpFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sIp}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sNavigator" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"> <p style="white-space: nowrap;position: absolute;
+                 top: 10px; left: 50px;">Navegador Web</p>  &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="sNavigatorFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sNavigator}} </td>
+              </ng-container>
+              <ng-container matColumnDef="sOrigen" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="FontF thmat"><p style="white-space: nowrap;position: absolute;
+                  top: 10px; left: 80px;"> Origen</p> &nbsp;
+                  <mat-form-field appearance="standar" class="matformfilter">
+                    <input class="FontF inputfilter" matInput  (keyup)="applyFilter()"  [formControl]="sOrigenFilter">
+                  </mat-form-field>
+                </th>
+                <td mat-cell *matCellDef="let element" class="FontF"> {{element.sOrigen}} </td>
+              </ng-container>
+
+              
+              <ng-container matColumnDef="loading" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  loading...
+                </th>
+              </ng-container>
+              <ng-container matColumnDef="noData" class="FontF">
+                <th mat-footer-cell *matFooterCellDef colspan="6"> 
+                  NO DATA
+                </th>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns" class="FontF"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}" class="FontF"></tr>
+              <tr mat-footer-row *matFooterRowDef="['noData']"  [ngClass]="{'hide':!(listData!=null && listData.data.length==0 )}" class="FontF"></tr>
+            </table>
+          </div>
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons class="FontF">
+
+            </mat-paginator>
+          </div>
+        </div>
+      
+

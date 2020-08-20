@@ -1,0 +1,45 @@
+#layoutSidenav_content {
+    padding: 50px 0px 50px 250px;
+  }
+
+.containerFilters{
+  display: flex;
+  flex-wrap: nowrap;
+  padding:20px;
+}
+  
+  
+  input {
+    width: 100px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .hide{
+    display: none;
+  }
+
+  mat-footer-row mat-footer-cell{
+    justify-content: center;
+    font-style: italic;
+  }
+
+.FontF{
+    font-family: 'Century Gothic';
+}
+
+.marginT{
+  margin-top: 50px;
+}
+
+.tops{
+  position: absolute; 
+  top: -150px;
+}

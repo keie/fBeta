@@ -1,0 +1,40 @@
+
+<div class="modal-header headerC">
+  <mat-toolbar class="FontF" style="background-color: #fdf4f4;">
+    <span>Cambio de contraseña</span>
+    <span class="fill-remaining-space"></span>
+  </mat-toolbar>
+  <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+  <form class="user" [formGroup]="form" >
+
+    <div class="card shadow mb-4" style="margin-top: 3%;">
+      <div class="card-header py-3" style="padding-top: 10%">
+          <h4 class="m-0 font-weight-bold text-primary FontF">Introduzca su nueva contraseña</h4>
+      </div>
+      <div class="card-body">
+        <mat-form-field class="FontF">
+          <input matInput type="password" placeholder="Introduzca la Contraseña Actual" formControlName="sClaveOld" >
+          </mat-form-field> 
+       <mat-form-field class="FontF"  >
+          <input matInput type="password"  placeholder="Introduzca la Nueva Contraseña" formControlName="sClaveNew" [errorStateMatcher]="passwordErrorMatcher" >
+          <mat-error>{{ getErrorMessage('sClaveNew') }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="FontF">
+          <input matInput type="password"  placeholder="Confirme la Nueva Contraseña" formControlName="sClaveConfirm" [errorStateMatcher]="passwordErrorMatcher">
+          <mat-error>{{ getErrorMessage('sClaveConfirm') }}</mat-error>
+        </mat-form-field> 
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button class="FontF btn btn-primary" (click)="changePassword(form)" mat-raised-button [disabled]="form.invalid" >Cambiar</button>
+      <button mat-raised-button  (click)="onClose()" class="FontF btn" style="margin-left: 20px;">Cerrar</button> 
+  </div> 
+
+  </form>
+  
+
+

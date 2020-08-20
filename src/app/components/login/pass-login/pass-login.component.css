@@ -1,0 +1,34 @@
+.FontF{
+    font-family: 'Century Gothic';
+    }
+  
+    .headerC{
+      padding: 0px;
+      background-color: #fdf4f4
+    }
+
+    mat-form-field {
+        width: 90%;
+      }
+
+      .redbutton{
+        background-color: #eb1313;
+        color: #ffffff;
+        margin-bottom: 3%;
+      }
+
+      .mat-toolbar {
+         background: #ffffff; 
+        color: rgba(0,0,0,.87);
+    }
+
+    .mat-stroked-button:not([disabled]) {
+      border-color: rgba(0,0,0,.0);
+  }
+
+  .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fdf4f4;
+    border-bottom: 1px solid #e3e6f0;
+}

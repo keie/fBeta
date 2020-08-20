@@ -1,0 +1,58 @@
+.FontF{
+    font-family: 'Century Gothic';
+    margin-top: 10px;
+    margin-left: 20px;
+    }
+
+    .FontT{
+      font-family: 'Century Gothic';
+      color: #eb1313;
+      }
+
+      .headerC{
+        padding: 0px;
+        background-color: #fdf4f4
+      }
+
+    mat-form-field {
+        width: 90%;
+      }
+
+      .example-section {
+        margin: 12px 0;
+      }
+      
+      .example-margin {
+        margin: 0 12px;
+      }
+      
+      ul {
+        list-style-type: none;
+        margin-top: 4px;
+      }
+
+      .redbutton{
+        background-color: #eb1313;
+        color: #ffffff;
+      }
+
+      .mat-toolbar {
+        background: transparent;
+        color: rgba(0,0,0,.87);
+    }
+
+    .mat-stroked-button:not([disabled]) {
+      border-color: rgba(0,0,0,0);
+  }
+
+  .card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fdf4f4;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.iconsM{
+  position: absolute;
+  right: -15px;
+  }

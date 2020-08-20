@@ -1,0 +1,12 @@
+.posicion{
+    height: 45px; font-size: 16px; 
+    font-weight: bold; 
+    position: absolute; 
+    top: 94px; 
+    left: 230px; 
+    background-color: transparent;
+}
+
+.FontF{
+    font-family: 'Century Gothic';
+    }
